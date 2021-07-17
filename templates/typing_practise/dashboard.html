@@ -1,0 +1,6 @@
+{% load static %}
+<p>Welcome to history</p>
+{% for data in user_data %}
+<p>{{ data.typing_speed }}</p>
+<p>{{ data.accuracy }}</p>
+{% endfor %}

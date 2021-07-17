@@ -1,0 +1,262 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    background:#162433; 
+}
+
+.main{
+    margin: 53px auto;
+    height:500px;
+    width: 900px;
+    background-color:transparent;
+}
+
+.left{
+    width: 33%;
+    height: 500px;
+    background-color:#340F6E;
+    float: left;
+}
+
+.right{
+    width:65%;
+    height: 500px;
+    background-color: white;
+    float: right;
+}
+      
+.app-title{
+        
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  color:white;
+  text-align: center;
+  margin-top: 50px;
+}
+      
+.score-container{
+  margin: 50px auto;
+  height: 240px;
+  width: 240px;
+  background-color: transparent;
+  border-color:  rgba(255, 255, 255,0.8);
+  border-width: 5px;
+  border-style: dotted;
+  border-radius: 130%;
+}
+
+#score{
+  padding: 78px;
+  text-align: center;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-weight: 50px;
+}
+      
+.menu-left{
+  height:500px;
+  width: 5%;
+  background-color: white;
+  margin-left: -18px;
+  float: left;
+}
+      
+.text-right{
+  height:500px;
+  width: 93%;
+  background-color:white;
+  float: right;
+}
+      
+.text-container{
+  margin-top: 30px;
+  height: 180px;
+  width: 450px;
+  border-style: solid;
+  border-width: 4px;
+  border-radius: 30px;
+  background-color:transparent;
+  border-color: #340F6E;
+  padding:0px 10px 0px 10px;
+}
+.text-1{
+  font-size: 26px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  display: inline;
+}
+
+.typing-area-container{
+  margin-top: 20px;
+  margin-left: 5px;
+}
+      
+#typing-area{
+  height: 40px;
+  width: 450px;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  outline: none;
+  color:#340F6E;
+  padding: 2px 0px 2px 15px;
+  border-style: solid;
+  border-radius: 20px;
+  color:#340F6E;
+}
+      
+.far,.fas{
+  color:white;
+  font-weight: 180px!important;
+}
+     
+.fa-tachometer-alt{
+  position: absolute;
+  top:176px;
+  left: 320px;
+  font-size: 40px;
+}
+      
+.fa-mouse{
+  position: absolute;
+  top:290px;
+  left: 440px;
+  font-size: 50px;
+}
+      
+.fa-keyboard{
+  position: absolute;
+  top:290px;
+  left: 200px;
+  font-size: 40px;
+}
+
+.fa-laptop-code{
+  position: absolute;
+  top:415px;
+  left: 320px;
+  font-size: 40px;
+}
+
+.typing-menu{
+  height: 50%;
+  background-color:rgba(52, 15, 110);
+}
+
+.fa-chalkboard-teacher{
+  margin-left: 10px;
+  margin-top: 100px;
+  color:white;
+  font-size: 40px;
+}
+
+.score-menu{
+  height: 50%;   
+  background-color:rgba(52, 15, 110,0.9);
+}
+
+.fa-poll{
+  margin-left: 25px;
+  margin-top: 100px;
+  color:white;
+  font-size: 40px;
+}
+
+.typed{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  margin-left: 100px;
+  color:#340F6E;
+  font-size: 25px;
+}
+
+#correct{
+  background-color: greenyellow;
+  padding: 3px;
+}
+
+#wrong{
+  background-color: red;
+  padding: 3px;
+}
+
+#cWord{
+  background-color: yellow;
+  border-style: none;
+  border-radius: 6px;
+}
+
+.speed{
+  margin-top: 60px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  color: #340F6E;
+ }
+
+#wpm{
+  margin-top: -50px;
+  margin-left: 220px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 50px;
+  background-color:#340F6E;
+  height: 150px;
+  width: 150px;
+  border-style: none;
+  border-radius: 20px;
+  color:white;
+}
+
+#wp{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  color:white;
+  text-align: center;
+  margin-top: -40px;
+}
+
+#and{
+  margin-top: 30px;
+  text-align:center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 40px;
+  color: #340F6E;   
+}
+
+#acc{        
+  margin-left: 170px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  color: #340F6E;
+  display: inline;
+}
+
+#accuracy{
+  margin-left: 10px;
+  display: inline;
+  background-color: red;
+  padding: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  border-radius: 10px;
+  color: white;
+}
+
+.code{
+  position: absolute;
+  top: 500px;
+  left: 250px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  text-align: center;
+  font-size: 20px;
+  color: rgba(255, 255, 255,0.6);   
+}

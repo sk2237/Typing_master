@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link href="{% static 'css/style_tp.css' %}" rel="stylesheet">
+
+  <title>Typing Test</title>
+</head>
+
+<body>
+  <div class="nav_bar_top">
+    <centre>
+      <ul class="nav_bar">
+        <p>Welcome!</p>
+        <li>
+          <a href="javascript:{document.getElementById('display').submit()}">
+            History</a>
+          <form action="{% url 'display' %}" method="POST" id="display">
+            {% csrf_token %}
+            <input type="hidden" name="user_id" value="{{ user.id }}">
+          </form>
+        </li>
+        <li>
+          <a href="javascript:{document.getElementById('logout').submit()}">
+            Logout
+          </a>
+          <form action="{% url 'logout' %}" method="POST" id="logout">
+            {% csrf_token %}
+            <input type="hidden">
+          </form>
+        </li>
+      </ul>
+    </centre>
+  </div>
+  <div class="main">
+    <div class="left">
+      <div>
+        <h1 class="app-title">Typing Test</h1>
+      </div>
+      <div class="icon-speed">
+
+      </div>
+      <div class="icon-recycle">
+
+
+      </div>
+      <div class="score-container">
+
+        <h1 id="score">Start!</h1>
+
+      </div>
+
+    </div>
+    <div class="right">
+
+      <div class="menu-left">
+
+      </div>
+      <div id="right" style="display: block;">
+        <div class="text-right">
+          <div class="text-container">
+            <p class="text-1" id="cWord"></p>
+            <p id="text-text" class="text-1"></p>
+          </div>
+          <div class="typing-area-container">
+            <input type="text" placeholder="Type here...." id="typing-area" />
+          </div>
+          <div>
+            <h1 class="typed">Typed Words : <span id="tTyped">0</span></h1>
+            <h1 class="typed">Correct Words : <span id="correct">0</span></h1>
+            <h1 class="typed">Wrong Words : <span id="wrong">0</span></h1>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="res" id="result" style="display: none;">
+        <h1 class="speed">Your Typing Speed is</h1>
+        <div id="wpm">
+          <h1 class="" id="wordpm">50</h1>
+        </div>
+        <p id="wp">wpm</p>
+        <h1 id="and">And</h1>
+        <h1 id="acc">Accuracy is</h1>
+        <h1 id="accuracy">20%</h1>
+        <div style="padding-left: 169px;padding-top: 35px;">
+          <form action="{% url 'history' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="user_id" value="{{ user.id }}">
+            <label>Typing Speed</label>
+            <input id="speed" type="text" value="" name="typing_speed" /><br><br>
+            <label>Accuracy</label></pre><label>
+              <input id="accur" type="text" value="" name="typing_accuracy" />
+              <input type="submit" value="save score">
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+  <script>
+    var typeArea = document.getElementById('typing-area');
+    var timeArea = document.getElementById('score');
+    var textContainer = document.getElementById('text-text');
+    var resultCont = document.getElementById('result');
+    var wpm = document.getElementById('wordpm');
+    var accuracy = document.getElementById("accuracy");
+    var cont = document.getElementById('right');
+    var tWords = document.getElementById('tTyped');
+    var cWord = document.getElementById('cWord');
+    var correct = document.getElementById('correct');
+    var wrong = document.getElementById('wrong');
+    var speed = document.getElementById('speed');
+    var accuracy_field = document.getElementById('accur')
+
+    var correctWords = 0;
+    var wrongWords = 0;
+    var totalWords = 0;
+    var currentWord = 0;
+    var typingParagraph = [
+      "Studying is the main source of knowledge. Books are indeed never failing friends of man. For a mature mind, reading is the greatest source of pleasure and solace to distressed minds. The study of good books ennobles us and broadens our outlook. Therefore, the habit of reading should be cultivated. A student should never confine himself to his schoolbooks only. He should not miss the pleasure locked in the classics, poetry, drama, history, philosophy etc. We can derive benefit from other’s experiences with the help of books. The various sufferings, endurance and joy described in books enable us to have a closer look at human life. They also inspire us to face the hardships of life courageously. Nowadays there are innumerable books and time is scarce. So we should read only the best and the greatest among them. With the help of books we shall be able to make our thinking mature and our life more meaningful and worthwhile."];
+
+    typeArea.onfocus = timer;
+    var time;
+    function timer() {
+      var seconds = 59;
+      time = setInterval(function () {
+        timeArea.textContent = seconds;
+        if (seconds == 0) {
+          clearInterval(time);
+          timeArea.textContent = "Result!";
+          cont.style.display = "none";
+          resultCont.style.display = "block";
+          wpm.textContent = currentWord;
+          speed.value = currentWord
+          accuracy.textContent = calculateAccuracy(correctWords, currentWord);
+          accuracy_field.value = calculateAccuracy(correctWords, currentWord);
+
+        }
+        seconds--;
+      }, 1000)
+    }
+    console.log(typingParagraph[0].split(' ')[0]);
+    updateText(currentWord);
+    function updateText(start) {
+      textContainer.textContent = "";
+      cWord.textContent = typingParagraph[0].split(" ")[start];
+      for (var i = start + 1; i < start + 19; i++) {
+        textContainer.textContent += " " + typingParagraph[0].split(' ')[i];
+      }
+    }
+    typeArea.onkeyup = function () {
+      var typedWord = this.value;
+      var check = typedWord.split(' ').length;
+      if (check == 2) {
+        verify(this.value);
+        this.placeholder = "";
+        this.value = "";
+      }
+    }
+    function verify(val) {
+      var val = val.trim();
+      if (val == typingParagraph[0].split(' ')[currentWord]) {
+        console.log('write');
+        currentWord++;
+        correctWords++;
+        correct.textContent = correctWords;
+        wrong.textContent = wrongWords;
+        tWords.textContent = currentWord;
+        updateText(currentWord);
+      }
+      else {
+        currentWord++;
+        wrongWords++;
+        correct.textContent = correctWords;
+        wrong.textContent = wrongWords;
+        tWords.textContent = currentWord;
+        updateText(currentWord);
+      }
+    }
+    function calculateAccuracy(c, d) {
+      var acc = (c / d);
+      acc = Math.ceil((acc * 100));
+      return acc;
+    }
+  </script>
+</body>
+
+</html>
