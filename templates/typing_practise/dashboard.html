@@ -1,6 +1,56 @@
 {% load static %}
-<p>Welcome to history</p>
-{% for data in user_data %}
-<p>{{ data.typing_speed }}</p>
-<p>{{ data.accuracy }}</p>
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    <style>
+        table {
+        border-collapse: collapse;
+        width: 30%;
+        }
+        th, td {
+        text-align: left;
+        padding: 8px;
+        }
+        ​tr:nth-child(even){background-color: #f2f2f2}
+        th {
+        color: white;
+        background-color: rgb(11, 122, 226);
+        }
+        a {
+            color: rgb(233, 43, 10);
+            text-decoration: none;
+            text-transform: uppercase;
+  }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Your Record History</h1>
+        <table border="solid">
+            <tr>
+                
+                <th>Typing Speed (WPM)</th>
+                <th>Accuracy (%) </th>
+                <th>Date</th>
+            </tr>
+            
+        {% for data in user_data %}
+            <tr>
+                <td>{{ data.typing_speed }}</td>
+                <td>{{ data.accuracy }}</td>
+                <td>{{ data.post_date }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        <br>
+        <br>
+        <a href="{% url 'index_typing' %}">Back</a>
+    </center>
+
+</body>
+</html>
+

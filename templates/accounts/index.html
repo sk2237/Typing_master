@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>seek coding</title>
+  <title>Login</title>
   <link href="{% static 'css/style_in.css' %}" rel="stylesheet">
   <!---we had linked our css file----->
 </head>
@@ -14,7 +14,7 @@
   <div class="full-page">
     <div class="navbar">
       <div>
-        <a href='website.html'>Typing Master</a>
+        <h1><a href='website.html'>Typing Master</a></h1>
       </div>
       <nav>
 
@@ -27,11 +27,8 @@
       <strong>
         {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
         Error:
-        {% else %}
-        {{ message.tags|title }}:
         {% endif %}
       </strong>
-      {{ message }}
     </div>
     {% endfor %}
     {% endif %}

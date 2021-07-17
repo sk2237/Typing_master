@@ -15,22 +15,33 @@
 </head>
 
 <body>
+  <style>
+    a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  }
+  </style>
   <div class="nav_bar_top">
     <centre>
-      <ul class="nav_bar">
-        <p>Welcome!</p>
+      <ul class="nav_bar" style="background-color: rgb(11, 122, 226);">
+        <h1 style="color: #ffffff; font-family: 'Raleway',sans-serif; font-size: 42px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase; ">Test your typing skills</h1>
+        <hr>
         <li>
-          <a href="javascript:{document.getElementById('display').submit()}">
-            History</a>
+          <center><a href="javascript:{document.getElementById('display').submit()}">
+            History</a></center>
+          
           <form action="{% url 'display' %}" method="POST" id="display">
             {% csrf_token %}
             <input type="hidden" name="user_id" value="{{ user.id }}">
           </form>
         </li>
+        <hr>
         <li>
-          <a href="javascript:{document.getElementById('logout').submit()}">
+          <center><a href="javascript:{document.getElementById('logout').submit()}">
             Logout
-          </a>
+          </a></center>
+          
           <form action="{% url 'logout' %}" method="POST" id="logout">
             {% csrf_token %}
             <input type="hidden">

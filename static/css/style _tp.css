@@ -3,7 +3,7 @@ body{
     padding: 0px;
     height: 100%;
     width: 100%;
-    background:#162433; 
+    background:#88bcf3; 
 }
 
 .main{
@@ -143,7 +143,7 @@ body{
 
 .typing-menu{
   height: 50%;
-  background-color:rgba(52, 15, 110);
+  background-color:rgb(15, 59, 110);
 }
 
 .fa-chalkboard-teacher{
